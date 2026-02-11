@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Amor ❤️ - San Valentín</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+            color: #6d2b41;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            color: #c44569;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #7e4a5c;
+        }
+        
+        .heart-container {
+            position: relative;
+            height: 200px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .main-heart {
+            font-size: 120px;
+            color: #ff4757;
+            animation: heartbeat 1.2s infinite;
+            text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
+            z-index: 2;
+        }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 24px;
+            color: rgba(255, 71, 87, 0.7);
+            opacity: 0;
+        }
+        
+        .message-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 2s ease-out;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ffcccc;
+        }
+        
+        .message-box:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0, #ffafbd);
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.5;
+        }
+        
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .signature {
+            font-size: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            color: #c44569;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        .interactive {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: fadeIn 2.5s ease-out;
+        }
+        
+        .love-btn {
+            background: linear-gradient(to right, #ff6b6b, #ff4757);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin: 10px 0;
+        }
+        
+        .love-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6);
+        }
+        
+        .love-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .secret-message {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+            animation: fadeIn 1s ease-out;
+            border: 1px dashed #ff6b6b;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #7e4a5c;
+            animation: fadeIn 3s ease-out;
+        }
+        
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Animaciones */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            5% { transform: scale(1.1); }
+            10% { transform: scale(1); }
+            15% { transform: scale(1.15); }
+            20% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(20deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .main-heart {
+                font-size: 90px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .love-btn {
+                padding: 12px 25px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-background" id="heartsBg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>¡Feliz San Valentín! ❤️</h1>
+            <div class="subtitle">Para la mujer más especial de mi vida</div>
+        </div>
+        
+        <div class="heart-container">
+            <div class="main-heart">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="floating-hearts" id="floatingHearts"></div>
+        </div>
+        
+        <div class="message-box">
+            <div class="message">
+                En este día especial quiero recordarte lo mucho que te amo. Cada momento a tu lado es un regalo, y no puedo imaginar mi vida sin ti. Eres la razón por la que mi corazón late con tanta fuerza.
+            </div>
+            <div class="signature">Con todo mi amor</div>
+        </div>
+        
+        <div class="interactive">
+            <button class="love-btn" id="showMessage">
+                <i class="fas fa-heart"></i> Haz clic para un mensaje especial
+            </button>
+            
+            <button class="love-btn" id="moreHearts">
+                <i class="fas fa-gift"></i> Más corazones para ti
+            </button>
+            
+            <div class="secret-message" id="secretMessage">
+                <h3>Para mi amor ❤️</h3>
+                <p>Eres la persona más increíble que he conocido. Gracias por ser mi compañera, mi apoyo y mi mayor alegría. Prometo amarte y cuidarte todos los días de mi vida. ¡Te amo más de lo que las palabras pueden expresar!</p>
+                <p style="margin-top: 10px; font-style: italic;">- Para siempre tuyo</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Esta animación fue creada con mucho amor para ti</p>
+            <p>❤️ ¡Feliz Día de San Valentín! ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        // Crear corazones flotantes en el fondo
+        const heartsBg = document.getElementById('heartsBg');
+        const floatingHearts = document.getElementById('floatingHearts');
+        const showMessageBtn = document.getElementById('showMessage');
+        const moreHeartsBtn = document.getElementById('moreHearts');
+        const secretMessage = document.getElementById('secretMessage');
+        
+        // Función para crear corazones flotantes
+        function createFloatingHeart(container, isBackground = false) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            heart.classList.add('floating-heart');
+            
+            // Tamaño y color aleatorio
+            const size = isBackground ? Math.random() * 20 + 10 : Math.random() * 20 + 15;
+            const colors = ['#ff4757', '#ff6b81', '#ffa502', '#ffcccc', '#ff9ff3'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            heart.style.fontSize = `${size}px`;
+            heart.style.color = color;
+            
+            // Posición aleatoria
+            const startX = Math.random() * 100;
+            heart.style.left = `${startX}%`;
+            
+            // Duración y retardo aleatorio
+            const duration = Math.random() * 3 + 3;
+            const delay = Math.random() * 2;
+            
+            heart.style.animation = `float ${duration}s ease-in ${delay}s forwards`;
+            
+            container.appendChild(heart);
+            
+            // Eliminar el corazón después de la animación
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.remove();
+                }
+            }, (duration + delay) * 1000);
+        }
+        
+        // Crear corazones de fondo continuamente
+        function createBackgroundHearts() {
+            if (document.hidden) return;
+            
+            for (let i = 0; i < 3; i++) {
+                createFloatingHeart(heartsBg, true);
+            }
+            
+            setTimeout(createBackgroundHearts, 300);
+        }
+        
+        // Crear corazones alrededor del corazón principal
+        function createMainHearts() {
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(floatingHearts, false);
+                }, i * 200);
+            }
+        }
+        
+        // Event listeners para los botones
+        showMessageBtn.addEventListener('click', function() {
+            if (secretMessage.style.display === 'block') {
+                secretMessage.style.display = 'none';
+                this.innerHTML = '<i class="fas fa-heart"></i> Haz clic para un mensaje especial';
+            } else {
+                secretMessage.style.display = 'block';
+                this.innerHTML = '<i class="fas fa-heart"></i> Ocultar mensaje';
+                
+                // Crear corazones cuando se muestra el mensaje
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        createFloatingHeart(floatingHearts, false);
+                    }, i * 150);
+                }
+            }
+        });
+        
+        moreHeartsBtn.addEventListener('click', function() {
+            // Crear una lluvia de corazones
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(floatingHearts, false);
+                }, i * 100);
+            }
+            
+            // Cambiar texto temporalmente
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-heart"></i> ¡Más corazones para ti!';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.disabled = false;
+            }, 2000);
+        });
+        
+        // Inicializar corazones de fondo
+        createBackgroundHearts();
+        
+        // Crear corazones alrededor del corazón principal periódicamente
+        setInterval(createMainHearts, 4000);
+        
+        // Crear corazones iniciales
+        setTimeout(createMainHearts, 1000);
+        
+        // Efecto de confeti al cargar la página
+        window.addEventListener('load', function() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(floatingHearts, false);
+                }, i * 150);
+            }
+        });
+        
+        // Agregar efecto de sonido (silenciado por defecto)
+        const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-heartbeat-love-901.mp3');
+        audio.volume = 0.3;
+        audio.loop = true;
+        
+        // Reproducir música cuando el usuario interactúe por primera vez
+        document.addEventListener('click', function initAudio() {
+            audio.play().catch(e => console.log("Reproducción automática bloqueada"));
+            document.removeEventListener('click', initAudio);
+        });
+        
+        // Para dispositivos móviles: efecto táctil
+        document.addEventListener('touchstart', function() {
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    createFloatingHeart(floatingHearts, false);
+                }, i * 100);
+            }
+        });
+    </script>
+</body>
+</html>
